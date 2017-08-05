@@ -49,7 +49,7 @@ def newEditor():
 	cache.set('availableWords', available)
 	cache.set('usedWords', used)
 
-	return render_template("created.html", key = key)
+	return render_template("success.html", key = key)
 
 @syncedAppBlueprint.route('/<key>')
 def viewEditor(key):
