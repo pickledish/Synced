@@ -5,12 +5,12 @@ function init()
 		authDomain: "synced-3c7d7.firebaseapp.com",
 		databaseURL: "https://synced-3c7d7.firebaseio.com",
 		projectId: "synced-3c7d7",
-		storageBucket: "synced-3c7d7.appspot.com",
-		messagingSenderId: "754507776693"
+		storageBucket: "synced-3c7d7.appspot.com"
 	};
 
 	firebase.initializeApp(config);
-	var firepadRef = getExampleRef();
+	var key = getKey();
+	var firepadRef = getReferenceFromString(key);
 
 	var container = document.getElementById('firepad-container');
 	var codeMirror = CodeMirror(container, { lineWrapping: true });
@@ -27,21 +27,23 @@ function init()
 	});
 }
 
-// Helper to get hash from end of URL or generate a random one.
-function getExampleRef() {
-  var ref = firebase.database().ref();
-  var hash = window.location.hash.replace(/#/g, '');
-  if (hash) {
-	ref = ref.child(hash);
-  } else {
-	ref = ref.push(); // generate unique location.
-	window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
-  }
-  if (typeof console !== 'undefined') {
-	console.log('Firebase data: ', ref.toString());
-  }
-  return ref;
+function getKey()
+{
+	var withSlash = window.location.pathname;
+	var key = withSlash.replace('/', '');
+	return key;
 }
+
+function getReferenceFromString(str)
+{
+	var parentRef = firebase.database().ref();
+	var childRef = ref.child(str);
+	console.log('Firebase data: ', childRef.toString());
+	return childRef;
+}
+
+
+
 
 
 
