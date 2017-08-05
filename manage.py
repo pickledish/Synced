@@ -1,10 +1,10 @@
 from flask_script import Manager
 from flask import Flask, url_for
 
-from NewApp import newAppBlueprint
+from SyncedApp import syncedAppBlueprint
 
 app = Flask(__name__)
-app.register_blueprint(newAppBlueprint, url_prefix = '')
+app.register_blueprint(syncedAppBlueprint, url_prefix = '')
 app.config.from_object('config')
 
 manager = Manager(app)

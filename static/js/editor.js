@@ -9,7 +9,6 @@ function init()
 	};
 
 	firebase.initializeApp(config);
-	var key = getKey();
 	var firepadRef = getReferenceFromString(key);
 
 	var container = document.getElementById('firepad-container');
@@ -25,13 +24,6 @@ function init()
 			firePad.setHtml("This is now an empty pad!");
 		}
 	});
-}
-
-function getKey()
-{
-	var withSlash = window.location.pathname;
-	var key = withSlash.replace('/', '');
-	return key;
 }
 
 function getReferenceFromString(str)
