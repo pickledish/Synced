@@ -37,7 +37,7 @@ function getKey()
 function getReferenceFromString(str)
 {
 	var parentRef = firebase.database().ref();
-	var childRef = ref.child(str);
+	var childRef = parentRef.child(str);
 	console.log('Firebase data: ', childRef.toString());
 	return childRef;
 }
