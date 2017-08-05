@@ -1,0 +1,27 @@
+html { 
+	height: 100%; 
+}
+
+body { 
+	margin: 0; 
+	height: 100%; 
+	position: relative; 
+	background-color: #eceff1;
+}
+
+#firepad-container {
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	height: 50vh;
+}
+
+.CodeMirror {
+	font-family: 'Open Sans', sans-serif;
+}
+
+a.powered-by-firepad {
+	display: none;
+}
