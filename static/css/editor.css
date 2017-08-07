@@ -1,10 +1,10 @@
 html { 
 	height: 100%; 
+	font-family: 'Open Sans', sans-serif;
 }
 
 body { 
 	margin: 0; 
-	height: 100%; 
 	position: relative; 
 	background-color: #eceff1;
 }
@@ -12,6 +12,11 @@ body {
 #firepad-container {
 	width: 100%;
 	height: 100%;
+}
+
+.card-title {
+	font-size: 2em !important;
+	margin-bottom: 20px !important;
 }
 
 .container {

@@ -11,18 +11,18 @@
 
 </head>
 
-<body onload = "init()">
+<body>
 
 	<div class = "container">
 		<div class = "card white" style = "height: 100%">
 			<div class="card-content">
-				<span class="card-title">FireKey Successful</span>
-				<p>Congrats, it worked out! Your new firekey is:</p> 
-				<p><span style = "font-size: 24pt;">{{key}}</span></p> 
+				<span class="card-title">Success</span>
+				<p>Congrats, it worked out! Your new firekey is:</p><br>
+				<p><span style = "font-size: 1.6em;">{{key}}</span></p><br>
 				<p>More words about how to share it with your friends! As if you had any friends, lol.</p>
 			</div>
 			<div class="card-action" style="position: absolute; bottom: 0; text-align: right; width: 100%;">
-				<a href="">Copy Link</a>
+				<a onclick="document.execCommand('copy');">Copy Link</a>
 				<a href="/{{key}}">Start Editing</a>
             </div>
 		</div>
