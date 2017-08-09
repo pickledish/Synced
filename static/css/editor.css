@@ -14,9 +14,20 @@ body {
 	height: 100%;
 }
 
+a {
+	cursor: pointer;
+}
+
 .card-title {
 	font-size: 2em !important;
 	margin-bottom: 20px !important;
+}
+
+.card-action {
+	position: absolute !important; 
+	bottom: 0; 
+	text-align: right; 
+	width: 100%;
 }
 
 .container {
@@ -37,3 +48,11 @@ a.powered-by-firepad {
 		margin-top: 80px;
 	}
 }
+
+#hidden {
+	position: relative;
+	top: -100px;
+	right: 50vw;
+	width: 5px;
+}
+

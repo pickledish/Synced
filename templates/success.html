@@ -9,6 +9,14 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 	<link rel="stylesheet" type="text/css" href="/static/css/editor.css">
 
+	<script>
+		function copi() {
+			var copyTextarea = document.getElementById('hidden');
+			copyTextarea.select();
+			document.execCommand('copy');
+		}
+	</script>
+
 </head>
 
 <body>
@@ -21,12 +29,14 @@
 				<p><span style = "font-size: 1.6em;">{{key}}</span></p><br>
 				<p>More words about how to share it with your friends! As if you had any friends, lol.</p>
 			</div>
-			<div class="card-action" style="position: absolute; bottom: 0; text-align: right; width: 100%;">
-				<a onclick="document.execCommand('copy');">Copy Link</a>
+			<div class="card-action">
+				<a onclick = "copi()">Copy Link</a>
 				<a href="/{{key}}">Start Editing</a>
             </div>
 		</div>
 	</div>
+
+	<textarea id="hidden">http://www.firekey.com/{{key}}</textarea>
 
 </body>
 </html>

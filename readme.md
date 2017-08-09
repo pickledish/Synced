@@ -18,5 +18,6 @@
 ### Currently To-Do:
 
 * Make it more responsive (for phones)
-* Get "copy link" working they way it should
+* ~~Get "copy link" working they way it should~~ All done
 * (Future) enable a spreadsheet mode
+* Remove the random `favicon.ico` error?
