@@ -10,14 +10,16 @@
 * [FireBase](https://firebase.google.com/), for storing data in a backend accessible to all users
 * [OT.js](https://github.com/Operational-Transformation/ot.js/), for the real work of operational transformations
 * [CodeMirror](https://codemirror.net/), for an extensible and Firepad-friendly text editor
+* [Redis](), via the RedisToGo Heroku extension, for persistence across servers
 
 <hr>
 
 ### Currently To-Do:
 
-* Make it more responsive (for phones)
+* ~~Make it more responsive (for phones)~~ Was missing viewport header
 * ~~Get "copy link" working they way it should~~ All done
 * (Future) enable a spreadsheet mode
 * ~~Remove the random `favicon.ico` error?~~ Make this better eventually
-* Why does it sometimes display "key not found"?
-* 
+* ~~Why does it sometimes display "key not found"?~~ Persistence, used Redis
+* Figure out why it takes 10x as long to load on mobile-sized browsers??
+	* It's literally just the iOS user agent???

@@ -4,6 +4,7 @@
 <head>
 
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="shortcut icon" type="image/png" href="https://www.google.com/favicon.ico"/>
 
@@ -12,13 +13,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 	<link rel="stylesheet" type="text/css" href="/static/css/editor.css">
-
-	<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
-	<script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
-
-	<script type="text/javascript">var key = '{{key}}'</script>
-	<script src="/static/js/editor.js"></script>
 
 </head>
 
@@ -29,6 +23,13 @@
 			<div class = "card-content" id = "firepad-container"></div>
 		</div>
 	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+	<script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+
+	<script type="text/javascript">var key = '{{key}}'</script>
+	<script src="/static/js/editor.js"></script>
 
 </body>
 </html>

@@ -16,10 +16,12 @@ function init()
 
 	var firePadParams = { richTextToolbar: false, richTextShortcuts: false };
 	var firePad = Firepad.fromCodeMirror(firepadRef, codeMirror, firePadParams);
+	console.log("after load")
 
 	// Set up the contents of the pad once it's loaded
 
 	firePad.on('ready', function() {
+		console.log("is ready")
 		if (firePad.isHistoryEmpty()) {
 			firePad.setHtml("This is now an empty pad!");
 		}
