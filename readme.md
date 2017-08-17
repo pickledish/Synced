@@ -18,4 +18,6 @@
 * Make it more responsive (for phones)
 * ~~Get "copy link" working they way it should~~ All done
 * (Future) enable a spreadsheet mode
-* Remove the random `favicon.ico` error?
+* ~~Remove the random `favicon.ico` error?~~ Make this better eventually
+* Why does it sometimes display "key not found"?
+* 
