@@ -19,6 +19,10 @@ class DBManager:
 		url = "https://synced-3c7d7.firebaseio.com/"
 		self.fb = firebase.FirebaseApplication(url, None)
 
+	def getUsed(self):
+
+		return redis.get('used')
+
 	def createKey(self):
 
 		if (not redis.get('available')): return None

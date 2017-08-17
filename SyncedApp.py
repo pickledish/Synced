@@ -39,7 +39,7 @@ def newEditor():
 @syncedAppBlueprint.route('/<key>')
 def viewEditor(key):
 
-	if (key not in DBManager.redis.get('used')):
+	if (key not in dbManager.getUsed()):
 
 		return render_template("error.html", errorText = missingKeyErr)
 
