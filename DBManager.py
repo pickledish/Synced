@@ -23,7 +23,7 @@ class DBManager:
 		self.used.add(key)
 
 		now = datetime.now()
-		expiry = now + timedelta(seconds = 60)
+		expiry = now + timedelta(minutes = 10)
 		delay = (expiry - now).total_seconds()
 
 		t = Timer(delay, self.removeKey, [key])
