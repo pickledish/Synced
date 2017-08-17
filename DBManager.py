@@ -5,37 +5,62 @@ from firebase import firebase
 
 import os
 import redis
+import pickle
 
-redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
-redis = redis.from_url(redis_url)
+conn = redis.from_url(os.getenv('REDISTOGO_URL'))
+
+class RedisSet:
+
+	def __init__(self, name):
+
+		self.name = name
+		self.storeSet(set())
+
+	def getSet(self):
+
+		pickled = conn.get(self.name)
+		return pickle.loads(pickled)
+
+	def storeSet(self, newSet):
+
+		pickled = pickle.dumps(newSet)
+		conn.set(self.name, pickled)
+
+	def addKey(self, key):
+
+		toStore = self.getSet()
+		toStore.add(key)
+		self.storeSet(toStore)
+
+	def removeKey(self, key):
+
+		toStore = self.getSet()
+		toStore.remove(key)
+		self.storeSet(toStore)
 
 class DBManager:
 
 	def __init__(self):
 
-		redis.set('available', set(['cat', 'dog', 'helium', 'jane', 'what', 'constant']))
-		redis.set('used', set())
+		self.available = RedisSet('available')
+		self.used = RedisSet('used')
+
+		self.available.storeSet(set(['cat', 'dog', 'helium', 'jane', 'what', 'constant']))
+		self.used.storeSet(set())
 
 		url = "https://synced-3c7d7.firebaseio.com/"
 		self.fb = firebase.FirebaseApplication(url, None)
 
-	def getUsed(self):
-
-		return redis.get('used')
-
 	def createKey(self):
 
-		if (not redis.get('available')): return None
+		available = self.available.getSet()
 
-		key = random.sample(redis.get('available'), 1).pop()
+		if (not available): return None
 
-		s = redis.get('available')
-		s.remove(key)
-		redis.set('available', s)
+		key = random.sample(available, 1).pop()
 
-		t = redis.get('used')
-		t.add(key)
-		redis.set('used', t)
+		self.available.removeKey(key)
+		self.used.addKey(key)
 
 		now = datetime.now()
 		expiry = now + timedelta(minutes = 10)
@@ -48,13 +73,8 @@ class DBManager:
 
 	def removeKey(self, key):
 
-		s = redis.get('available')
-		s.add(key)
-		redis.set('available', s)
-
-		t = redis.get('used')
-		t.remove(key)
-		redis.set('used', t)
+		self.used.removeKey(key)
+		self.available.addKey(key)
 
 		try: self.fb.delete('/', key)
 		except: pass
