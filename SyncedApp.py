@@ -41,7 +41,6 @@ def viewEditor(key):
 
 	if (key not in dbManager.used):
 
-		dbManager.removeKey(key)
 		return render_template("error.html", errorText = missingKeyErr)
 
 	return render_template("editor.html", key = key)
