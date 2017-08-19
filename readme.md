@@ -21,5 +21,6 @@
 * (Future) enable a spreadsheet mode
 * ~~Remove the random `favicon.ico` error?~~ Make this better eventually
 * ~~Why does it sometimes display "key not found"?~~ Persistence, used Redis
-* Figure out why it takes 10x as long to load on mobile-sized browsers??
-	* It's literally just the iOS user agent???
+* ~~Figure out why it takes 10x as long to load on mobile-sized browsers??~~
+	* ~~It's literally just the iOS user agent???~~ Forced it to be Mozilla, feels gross
+* Get a better favicon
