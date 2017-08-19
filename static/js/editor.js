@@ -1,5 +1,11 @@
 function init() 
 {
+
+	// Clear the user agent. Necessary to fix iOS 10-second load bug
+	Object.defineProperty(navigator, 'userAgent', {
+		get: function () { return 'Mozilla/5.0 (compatible)'; }
+	});
+
 	var config = {
 		apiKey: "AIzaSyCqRx270zo8stz3pIaAGGeoUaD9Jtn41UI",
 		authDomain: "synced-3c7d7.firebaseapp.com",
@@ -28,8 +34,7 @@ function init()
 	});
 }
 
-function getReferenceFromString(str)
-{
+function getReferenceFromString(str) {
 	var parentRef = firebase.database().ref();
 	var childRef = parentRef.child(str);
 	console.log('Firebase data: ', childRef.toString());
