@@ -3,6 +3,8 @@
 #----------------------------------------------------------------------------#
 
 from flask import Flask, Blueprint, render_template
+
+import config
 from DBManager import DBManager
 
 #----------------------------------------------------------------------------#
@@ -12,7 +14,7 @@ from DBManager import DBManager
 syncedAppBlueprint = Blueprint('syncedApp', __name__,
 	template_folder = 'templates', static_folder = 'static')
 
-dbManager = DBManager()
+dbManager = DBManager(config.SOURCE_PATH)
 
 getKeyErr = "There are no available keys! Please try again?"
 missingKeyErr = "Sadly that key does not exist!"

@@ -1,7 +1,7 @@
 function init() 
 {
 
-	// Clear the user agent. Necessary to fix iOS 10-second load bug
+	// Clear the user agent. Necessary to fix iOS 10-second load bug, whaatttt
 	Object.defineProperty(navigator, 'userAgent', {
 		get: function () { return 'Mozilla/5.0 (compatible)'; }
 	});

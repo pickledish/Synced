@@ -40,12 +40,14 @@ class RedisSet:
 
 class DBManager:
 
-	def __init__(self):
+	def __init__(self, sourcePath):
 
 		self.available = RedisSet('available')
 		self.used = RedisSet('used')
 
-		self.available.storeSet(set(['cat', 'dog', 'helium', 'jane', 'what', 'constant']))
+		words = [w.strip() for w in open(sourcePath, 'r').readlines()]
+
+		self.available.storeSet(set(words))
 		self.used.storeSet(set())
 
 		url = "https://synced-3c7d7.firebaseio.com/"
