@@ -24,5 +24,6 @@
 	* ~~It's literally just the iOS user agent???~~ Forced it to be Mozilla, feels gross
 * ~~Move over from 6 words to like 10,000~~
 * ~~Get a better favicon~~
+* Update the text to not be condescending
 * (Future) enable a spreadsheet mode
 * (Future) add a poll mode?

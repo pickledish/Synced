@@ -23,7 +23,6 @@ function init()
 	console.log("after load")
 
 	// Set up the contents of the pad once it's loaded
-
 	firePad.on('ready', function() {
 		console.log("is ready")
 		if (firePad.isHistoryEmpty()) {
@@ -33,14 +32,12 @@ function init()
 }
 
 function setUserAgent(window, userAgent) {
-    if (window.navigator.userAgent != userAgent) {
-        var userAgentProp = { get: function () { return userAgent; } };
-        try {
-            Object.defineProperty(window.navigator, 'userAgent', userAgentProp);
-        } catch (e) {
-            window.navigator = Object.create(navigator, { userAgent: userAgentProp });
-        }
-    }
+	var userAgentProp = { get: function () { return userAgent; } };
+	try {
+		Object.defineProperty(window.navigator, 'userAgent', userAgentProp);
+	} catch (e) {
+		window.navigator = Object.create(navigator, { userAgent: userAgentProp });
+	}
 }
 
 function getReferenceFromString(str) {
@@ -49,9 +46,6 @@ function getReferenceFromString(str) {
 	console.log('Firebase data: ', childRef.toString());
 	return childRef;
 }
-
-
-
 
 
 
