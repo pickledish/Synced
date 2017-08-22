@@ -2,9 +2,7 @@ function init()
 {
 
 	// Clear the user agent. Necessary to fix iOS 10-second load bug, whaatttt
-	Object.defineProperty(navigator, 'userAgent', {
-		get: function () { return 'Mozilla/5.0 (compatible)'; }
-	});
+	setUserAgent(window, 'Mozilla/5.0 (compatible)');
 
 	var config = {
 		apiKey: "AIzaSyCqRx270zo8stz3pIaAGGeoUaD9Jtn41UI",
@@ -32,6 +30,17 @@ function init()
 			firePad.setHtml("This is now an empty pad!");
 		}
 	});
+}
+
+function setUserAgent(window, userAgent) {
+    if (window.navigator.userAgent != userAgent) {
+        var userAgentProp = { get: function () { return userAgent; } };
+        try {
+            Object.defineProperty(window.navigator, 'userAgent', userAgentProp);
+        } catch (e) {
+            window.navigator = Object.create(navigator, { userAgent: userAgentProp });
+        }
+    }
 }
 
 function getReferenceFromString(str) {
