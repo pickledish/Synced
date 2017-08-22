@@ -53,6 +53,7 @@ a.powered-by-firepad {
 }
 
 #hidden {
+	font-size: 16px;
 	position: relative;
 	top: -100px;
 	right: 50vw;
