@@ -19,6 +19,12 @@ a {
 	cursor: pointer;
 }
 
+.monospace {
+	padding: 0 4px 0 4px;
+	font-family: monospace;
+	background-color: #f0dabe;
+}
+
 .card-title {
 	font-size: 2em !important;
 	margin-bottom: 20px !important;
@@ -32,7 +38,7 @@ a {
 }
 
 .container {
-	height: calc(100% - 40px);
+	height: auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }

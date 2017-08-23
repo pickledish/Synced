@@ -26,7 +26,7 @@ function init()
 	firePad.on('ready', function() {
 		console.log("is ready")
 		if (firePad.isHistoryEmpty()) {
-			firePad.setHtml("This is now an empty pad!");
+			firePad.setHtml("Write a new note");
 		}
 	});
 }

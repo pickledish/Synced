@@ -22,8 +22,9 @@
 * ~~Why does it sometimes display "key not found"?~~ Persistence, used Redis
 * ~~Figure out why it takes 10x as long to load on mobile-sized browsers??~~
 	* ~~It's literally just the iOS user agent???~~ Forced it to be Mozilla, feels gross
-* ~~Move over from 6 words to like 10,000~~
-* ~~Get a better favicon~~
-* Update the text to not be condescending
+* ~~Move over from 6 words to like 10,000~~ Used a set of words from Google
+* ~~Get a better favicon~~ Made it myself
+* ~~Update the text to not be condescending~~ All set
+* Make the user choose how long it lasts
 * (Future) enable a spreadsheet mode
 * (Future) add a poll mode?
