@@ -43,6 +43,10 @@ a {
 	margin-bottom: 20px;
 }
 
+#editContainer {
+	height: calc(100% - 40px);
+}
+
 .CodeMirror {
 	font-family: 'Open Sans', sans-serif;
 }
