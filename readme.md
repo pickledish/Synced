@@ -25,6 +25,8 @@
 * ~~Move over from 6 words to like 10,000~~ Used a set of words from Google
 * ~~Get a better favicon~~ Made it myself
 * ~~Update the text to not be condescending~~ All set
+* ~~Move from Redis to Postgres because why redis ever~~ done
+* Add better error handling
 * Make the user choose how long it lasts
 * (Future) enable a spreadsheet mode
 * (Future) add a poll mode?

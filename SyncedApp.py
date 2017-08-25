@@ -3,8 +3,8 @@
 #----------------------------------------------------------------------------#
 
 from flask import Flask, Blueprint, render_template
-
 import config
+
 from DBManager import DBManager
 
 #----------------------------------------------------------------------------#
@@ -14,7 +14,7 @@ from DBManager import DBManager
 syncedAppBlueprint = Blueprint('syncedApp', __name__,
 	template_folder = 'templates', static_folder = 'static')
 
-dbManager = DBManager()
+dbManager = DBManager(config.FIREBASE_URL)
 
 getKeyErr = "There are no available keys! Please try again?"
 missingKeyErr = "Sadly that key does not exist!"
@@ -41,7 +41,7 @@ def newEditor():
 @syncedAppBlueprint.route('/<key>')
 def viewEditor(key):
 
-	if (key not in dbManager.used.getSet()):
+	if (not dbManager.checkIfUsed(key)):
 
 		return render_template("error.html", errorText = missingKeyErr)
 

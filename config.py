@@ -13,3 +13,5 @@ SECRET_KEY = 'my precious'
 SOURCE_PATH = 'google-10000-english-usa-no-swears-medium.txt'
 
 SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+
+FIREBASE_URL = "https://synced-3c7d7.firebaseio.com/"

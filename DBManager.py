@@ -22,13 +22,11 @@ class Key(db.Model):
 
 class DBManager:
 
-	def __init__(self):
+	@staticmethod
+	def addAllWords():
 
-		url = "https://synced-3c7d7.firebaseio.com/"
-		self.fb = firebase.FirebaseApplication(url, None)
-
-	# Only run this once! By hand!
-	def addAllWords(self, sourcePath):
+		import config
+		sourcePath = config.SOURCE_PATH
 
 		words = [w.strip() for w in open(sourcePath, 'r').readlines()]
 
@@ -39,15 +37,19 @@ class DBManager:
 
 		db.session.commit()
 
+	def __init__(self, url):
+
+		self.fb = firebase.FirebaseApplication(url, None)
+
 	def createKey(self):
 
 		self.refreshKeys()
 
-		available = Key.query.filter_by(used = False)
+		available = list(Key.query.filter_by(used = False))
 
 		if (not available): return None
 
-		key = random.sample(available, 1).pop()
+		key = random.choice(available)
 
 		key.used = True
 		key.expires = datetime.now() + timedelta(hours = 24)
@@ -71,4 +73,11 @@ class DBManager:
 
 		db.session.commit()
 
+	def checkIfUsed(self, word):
+
+		key = Key.query.filter_by(word = word)
+
+		if (not key): return False
+
+		else: return key.first().used
 
