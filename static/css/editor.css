@@ -43,8 +43,10 @@ a {
 	margin-bottom: 20px;
 }
 
-#editContainer {
-	height: calc(100% - 40px);
+@media screen and (max-width: 768px) {
+	#editContainer {
+		height: calc(100% - 40px);
+	}
 }
 
 .CodeMirror {
