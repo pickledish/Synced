@@ -1,6 +1,6 @@
 from flask_script import Manager
 from flask import Flask, url_for
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 from SyncedApp import syncedAppBlueprint
 

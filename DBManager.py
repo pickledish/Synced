@@ -4,12 +4,13 @@ from threading import Timer
 from firebase import firebase
 
 import os
-import redis
 import pickle
 
 class DBManager:
 
 	def __init__(self, sourcePath):
+
+		return
 
 		self.available = RedisSet('available')
 		self.used = RedisSet('used')
@@ -23,6 +24,8 @@ class DBManager:
 		self.fb = firebase.FirebaseApplication(url, None)
 
 	def createKey(self):
+
+		return "hello"
 
 		available = self.available.getSet()
 
@@ -43,6 +46,8 @@ class DBManager:
 		return key
 
 	def removeKey(self, key):
+
+		return
 
 		self.used.removeKey(key)
 		self.available.addKey(key)
