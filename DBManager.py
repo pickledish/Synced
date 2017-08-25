@@ -6,51 +6,69 @@ from firebase import firebase
 import os
 import pickle
 
+from manage import db
+
+class Key(db.Model):
+
+	word = db.Column(db.String(20), primary_key = True)
+	used = db.Column(db.Boolean())
+	expires = db.Column(db.DateTime())
+
+	def __init__(self, word):
+
+		self.word = word
+		self.used = False
+		self.expires = None
+
 class DBManager:
 
-	def __init__(self, sourcePath):
-
-		return
-
-		self.available = RedisSet('available')
-		self.used = RedisSet('used')
-
-		words = [w.strip() for w in open(sourcePath, 'r').readlines()]
-
-		self.available.storeSet(set(words))
-		self.used.storeSet(set())
+	def __init__(self):
 
 		url = "https://synced-3c7d7.firebaseio.com/"
 		self.fb = firebase.FirebaseApplication(url, None)
 
+	# Only run this once! By hand!
+	def addAllWords(self, sourcePath):
+
+		words = [w.strip() for w in open(sourcePath, 'r').readlines()]
+
+		for w in words:
+
+			key = Key(w)
+			db.session.add(key)
+
+		db.session.commit()
+
 	def createKey(self):
 
-		return "hello"
+		self.refreshKeys()
 
-		available = self.available.getSet()
+		available = Key.query.filter_by(used = False)
 
 		if (not available): return None
 
 		key = random.sample(available, 1).pop()
 
-		self.available.removeKey(key)
-		self.used.addKey(key)
+		key.used = True
+		key.expires = datetime.now() + timedelta(hours = 24)
 
-		now = datetime.now()
-		expiry = now + timedelta(hours = 24)
-		delay = (expiry - now).total_seconds()
+		db.session.commit()
 
-		t = Timer(delay, self.removeKey, [key])
-		t.start()
+		return key.word
 
-		return key
+	def refreshKeys(self):
 
-	def removeKey(self, key):
+		used = Key.query.filter_by(used = True)
 
-		return
+		for key in used:
 
-		self.used.removeKey(key)
-		self.available.addKey(key)
+			if (key.expires < datetime.now()):
 
-		try: self.fb.delete('/', key)
-		except: pass
+				key.used = False
+				key.expires = None
+
+				self.fb.delete('/', key.word)
+
+		db.session.commit()
+
+

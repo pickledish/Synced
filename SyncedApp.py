@@ -14,7 +14,7 @@ from DBManager import DBManager
 syncedAppBlueprint = Blueprint('syncedApp', __name__,
 	template_folder = 'templates', static_folder = 'static')
 
-dbManager = DBManager(config.SOURCE_PATH)
+dbManager = DBManager()
 
 getKeyErr = "There are no available keys! Please try again?"
 missingKeyErr = "Sadly that key does not exist!"
