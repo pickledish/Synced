@@ -7,37 +7,6 @@ import os
 import redis
 import pickle
 
-conn = redis.from_url(os.getenv('REDISTOGO_URL'))
-
-class RedisSet:
-
-	def __init__(self, name):
-
-		self.name = name
-		self.storeSet(set())
-
-	def getSet(self):
-
-		pickled = conn.get(self.name)
-		return pickle.loads(pickled)
-
-	def storeSet(self, newSet):
-
-		pickled = pickle.dumps(newSet)
-		conn.set(self.name, pickled)
-
-	def addKey(self, key):
-
-		toStore = self.getSet()
-		toStore.add(key)
-		self.storeSet(toStore)
-
-	def removeKey(self, key):
-
-		toStore = self.getSet()
-		toStore.remove(key)
-		self.storeSet(toStore)
-
 class DBManager:
 
 	def __init__(self, sourcePath):
