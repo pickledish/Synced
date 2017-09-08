@@ -26,7 +26,7 @@ function init()
 	firePad.on('ready', function() {
 		console.log("is ready")
 		if (firePad.isHistoryEmpty()) {
-			firePad.setHtml("Write a new note");
+			firePad.setHtml("Write some trash here...");
 		}
 	});
 }

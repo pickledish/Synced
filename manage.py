@@ -1,5 +1,5 @@
 from flask_script import Manager
-from flask import Flask, url_for
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)

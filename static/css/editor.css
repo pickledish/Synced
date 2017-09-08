@@ -22,7 +22,7 @@ a {
 .monospace {
 	padding: 0 4px 0 4px;
 	font-family: monospace;
-	background-color: #f0dabe;
+	font-weight: 700;
 }
 
 .card-title {
